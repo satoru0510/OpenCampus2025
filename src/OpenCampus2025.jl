@@ -1,6 +1,6 @@
 module OpenCampus2025
 
-init() = include("main.jl")
+init() = include((@__DIR__) * "/main.jl")
 
 
 end # module OpenCampus2025

@@ -2,7 +2,7 @@ using Electron
 
 using Plots, Images, Dates, Yao, JSON
 
-dict = JSON.parsefile("config.json")
+dict = JSON.parsefile((@__DIR__) * "/config.json")
 const nq = dict["nqubits"]
 const depth = dict["depth"]
 const nshots = dict["nshots"]
@@ -20,20 +20,20 @@ function str_to_cir(str)
 end
 
 function generate_image(cir)
-    rm("../assets/tmp/",recursive=true)
-	mkdir("../assets/tmp")
+    rm((@__DIR__) * "/../assets/tmp/",recursive=true)
+	mkdir((@__DIR__) * "/../assets/tmp")
     filename = string(Dates.format(now(), "yyyymmddHHMMSS"),"_circuit.svg")
-    vizcircuit(cir; filename="../assets/tmp/$filename")
+    vizcircuit(cir; filename=(@__DIR__) * "/../assets/tmp/$filename")
 	return filename
 end
 
 function generate_plot(data)
     Plots.plot(fontfamily="IPAMincho", size=(450,300))
     plot!(data; legend=:none, xlabel="最適化の繰り返し回数", ylabel="誤差")
-    rm("../assets/tmp2/",recursive=true)
-	mkdir("../assets/tmp2")
+    rm((@__DIR__) * "/../assets/tmp2/",recursive=true)
+	mkdir((@__DIR__) * "/../assets/tmp2")
     filename = string(Dates.format(now(), "yyyymmddHHMMSS"),"_plot.svg")
-    savefig("../assets/tmp2/$filename")
+    savefig((@__DIR__) * "/../assets/tmp2/$filename")
 	return filename
 end
 
@@ -103,5 +103,5 @@ function run_demo()
         println("regenerate window")
     end
 end
-include("qcl.jl")
+include((@__DIR__) * "/qcl.jl")
 println("initialization completed")
