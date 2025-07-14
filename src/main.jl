@@ -83,6 +83,7 @@ function run_demo()
         elseif request["cmd"] == "run"
             global nparams = circuit |> nparameters
             if nparams==0
+                run(win,"setProgress(\"\");")
                 continue
             end
             res = run_qcl(;callback)
