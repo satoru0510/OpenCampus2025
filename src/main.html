@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circuit Builder</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<script type="text/javascript" src="main.js"></script>
+
+<body>
+  <div class="circuit_drawer">
+    <div class="title" ></div>
+      <div class="counter_input">
+        <script>
+            for(var i=0; i < depth; i++){
+                document.write(`        
+                    <select id="gate${i}" size="1" onchange="draw();">
+                        <option selected>none</option>
+                        <option>Rx</option>
+                        <option>Ry</option>
+                        <option>Rz</option>
+                        <option>CNOT</option>
+                        <option>CZ</option>
+                        <option>SWAP</option>
+                    </select>
+                `);
+            }
+        </script>
+        
+        <input type="button" value="reset" onClick="reset();">
+      </div>
+    <fieldset class="data_image_field">
+      <legend>Quantum Circuit</legend>
+      <div class="left"><img id="circuit_image" height="300"></div>
+    </fieldset>
+    <input type="button" value="run" onClick="run();">
+    <img id="progress" height="15">
+    <fieldset class="data_image_field">
+      <legend>Result</legend>
+      <div class="right">
+        <img id="plot_image" width="540" height="360" style="float:right">
+        <div id="lab"></div>
+    </div>
+    </fieldset>
+    <div id="result"></div>
+  </div>
+</body>
+
+</html>
