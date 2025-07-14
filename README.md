@@ -3,7 +3,7 @@ Juliaのインストールは[https://julialang.org/install/](https://julialang.
 
 インストール後、juliaのREPLで
 ```julia
-Pkg> add https://github.com/satoru0510/OpenCampus2025
+pkg> add https://github.com/satoru0510/OpenCampus2025
 ```
 または
 ```julia
