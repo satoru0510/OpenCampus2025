@@ -82,6 +82,9 @@ function run_demo()
             run(win,"setImage(\"../assets/tmp/$(filename)\");")
         elseif request["cmd"] == "run"
             global nparams = circuit |> nparameters
+            if nparams==0
+                continue
+            end
             res = run_qcl(;callback)
             testset_idx = 901:1000
             acc = accuracy([xc_train[:,i] for i in testset_idx], res.minimizer, y_train[idx_01[testset_idx]])
