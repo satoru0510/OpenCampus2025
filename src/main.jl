@@ -9,7 +9,7 @@ const nshots = dict["nshots"]
 CircuitStyles.barrier_for_chain[] = true
 
 function str_to_cir(str)
-    str == "none" && return chain(nq)
+    str == "" && return chain(nq)
     str == "Rx" && return chain(nq, [put(i => Rx(0)) for i in 1:nq])
     str == "Ry" && return chain(nq, [put(i => Ry(0)) for i in 1:nq])
     str == "Rz" && return chain(nq, [put(i => Rz(0)) for i in 1:nq])
@@ -39,6 +39,8 @@ end
 
 export run_demo
 function run_demo()
+    old_dir = pwd()
+    cd((@__DIR__))
     app = Application()
 
     main_html_uri = string("file:///", replace(joinpath(@__DIR__, "main.html"), '\\' => '/'))
@@ -55,7 +57,6 @@ function run_demo()
         for i in 1:len
             str = string(length(arg)-i+1, ":&emsp;", arg[end-i+1].value, "<br>") * str
         end
-        # str = string(length(arg), ": ", arg[end].value, "<br>hello")
         run(win,"setLabel(\"$(str)\");")
         false
     end
@@ -80,12 +81,6 @@ function run_demo()
             filename = generate_image(circuit)
             run(win,"setImage(\"../assets/tmp/$(filename)\");")
         elseif request["cmd"] == "run"
-            # st = zero_state(nq)
-            # apply!(st, circuit)
-            # res = measure(st; nshots) .|> Int
-            # println(res)
-            # fn = generate_plot(res)
-            # run(win,"setPlot(\"../assets/tmp2/$(fn)\");")
             global nparams = circuit |> nparameters
             res = run_qcl(;callback)
             testset_idx = 901:1000
@@ -100,8 +95,9 @@ function run_demo()
             run(win,"setProgress(\"\");")
         end
 
-        println("regenerate window")
+        println("waiting for next command...")
     end
+    cd(old_dir)
 end
 include((@__DIR__) * "/qcl.jl")
 println("initialization completed")

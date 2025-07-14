@@ -20,7 +20,6 @@ function reset(){
 }
 
 function makeJsonString(cmd, gates){
-  // let jsonString = `{"g1":"${g1}", "g2":"${g2}", "g3":"${g3}"}`;
   let jsonString = `{"cmd":"${cmd}",`;
   for(var i=0; i < depth; i++){
     jsonString = jsonString + `"g${i}":"${gates[i]}"`;
@@ -70,5 +69,3 @@ function run(){
   let jsonData = JSON.parse(jsonString);
   sendMessageToJulia(jsonData);
 }
-
-// setInterval(draw, 100);
