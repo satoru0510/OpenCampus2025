@@ -1,1 +1,3 @@
-Manifest.toml
+/Manifest.toml
+# /assets/tmp/*
+# /assets/tmp2/*

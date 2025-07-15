@@ -1,5 +1,4 @@
 {
     "nqubits":6,
-    "depth":12,
-    "nshots":1000
+    "depth":12
 }
