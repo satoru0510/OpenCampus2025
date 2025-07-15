@@ -104,4 +104,12 @@ function run_demo()
     cd(old_dir)
 end
 include((@__DIR__) * "/qcl.jl")
+
+if !("tmp" in readdir((@__DIR__) * "/../assets"))
+    mkdir((@__DIR__) * "/../assets/tmp")
+end
+if !("tmp2" in readdir((@__DIR__) * "/../assets"))
+    mkdir((@__DIR__) * "/../assets/tmp2")
+end
+
 println("initialization completed")
