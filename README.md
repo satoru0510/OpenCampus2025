@@ -1,3 +1,5 @@
+GUIポチポチで量子回路学習を体験できるデモ
+
 # Installation
 Juliaのインストールは[https://julialang.org/install/](https://julialang.org/install/)を参照。
 
