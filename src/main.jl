@@ -5,7 +5,6 @@ using Plots, Images, Dates, Yao, JSON, Printf
 dict = JSON.parsefile((@__DIR__) * "/config.json")
 const nq = dict["nqubits"]
 const depth = dict["depth"]
-const nshots = dict["nshots"]
 CircuitStyles.barrier_for_chain[] = true
 
 function str_to_cir(str)
