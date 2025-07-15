@@ -11,22 +11,23 @@
 
 <body>
   <div class="circuit_drawer">
-    <div class="title" ></div>
-      <div class="counter_input" id="selects">
-        <input type="button" value="リセット" onClick="reset();">
-        <script type="text/javascript" src="selects.js"></script>
-      </div>
+    <div class="selectors" id="selects">
+      <input type="button" value="リセット" onClick="reset();">
+      <script type="text/javascript" src="selects.js"></script>
+    </div>
     <fieldset class="data_image_field">
       <legend>量子回路</legend>
       <div class="left"><img id="circuit_image" height="300"></div>
     </fieldset>
-    <input type="button" value="実行" onClick="run();">
-    <img id="progress" height="15">
+    <div class="selectors">
+      <input type="button" value="実行" onClick="run();">
+      <img id="progress" height="15">
+    </div>
     <fieldset class="data_image_field">
       <legend>結果</legend>
       <div class="right">
         <img id="plot_image" width="540" height="360" style="float:right">
-        <div id="lab"></div>
+        <div id="lab", class="monospaced"></div>
     </div>
     </fieldset>
     <div id="result"></div>

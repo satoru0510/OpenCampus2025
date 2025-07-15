@@ -1,6 +1,6 @@
 using Electron
 
-using Plots, Images, Dates, Yao, JSON
+using Plots, Images, Dates, Yao, JSON, Printf
 
 dict = JSON.parsefile((@__DIR__) * "/config.json")
 const nq = dict["nqubits"]
@@ -55,8 +55,9 @@ function run_demo()
         len = min(length(arg), 15)
         str = ""
         for i in 1:len
-            str = string(length(arg)-i+1, ":&emsp;", arg[end-i+1].value, "<br>") * str
+            str = string(@sprintf("%3d", length(arg)-i+1), ":", arg[end-i+1].value, "<br>") * str
         end
+        str = replace(str, " "=>"&nbsp;")
         run(win,"setLabel(\"$(str)\");")
         false
     end
