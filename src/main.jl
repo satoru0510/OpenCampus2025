@@ -54,7 +54,7 @@ function run_demo()
         len = min(length(arg), 15)
         str = ""
         for i in 1:len
-            str = string(@sprintf("%3d", length(arg)-i+1), ":", arg[end-i+1].value, "<br>") * str
+            str = string(@sprintf("%3d", length(arg)-i+1), ":", arg[end-i+1].value/300, "<br>") * str
         end
         str = replace(str, " "=>"&nbsp;")
         run(win,"setLabel(\"$(str)\");")
@@ -92,7 +92,7 @@ function run_demo()
             res_str = "100枚の画像のうち、$(round(Int, acc*100))枚の画像を正しく判別できました。<br>"
             res_str *= "実行時間：$(res.time_run)秒<br>"
             run(win,"setResult(\"$(res_str)\");")
-            data = [res.trace[i].value for i in 1:length(res.trace)]
+            data = [res.trace[i].value/300 for i in 1:length(res.trace)]
             fn_plot = generate_plot(data)
             run(win,"setPlot(\"../assets/tmp2/$(fn_plot)\");")
             GC.gc()

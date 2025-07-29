@@ -13,3 +13,6 @@ div.right img{
 div.monospaced{
   font-family: 'Cascadia Code', monospace;
 }
+div.result{
+  font-size: x-large;
+}
