@@ -19,3 +19,6 @@ julia> using OpenCampus2025 #必要なパッケージが自動でインストー
 julia> OpenCampus2025.init() #学習に使うデータを準備します。初回は少し時間がかかります。何か聞かれたら"y"と入力してEnter。
 julia> run_demo() #ウィンドウが立ち上がります。
 ```
+
+# もう少し詳しい説明
+[https://satoru0510.github.io/oc2025.html](https://satoru0510.github.io/oc2025.html)
